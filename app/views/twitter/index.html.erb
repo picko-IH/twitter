@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <div class="container text-right">
-      <div class="input-group m-4 row">
+    <div class="container">
+      <div class="input-group m-4 row text-right">
         <div class="col-7"></div>
         <div class="input-group-prepend col">
           <input type="text" class="form-control" placeholder="メールアドレス" aria-label="Input group example" aria-describedby="btnGroupAddon2">
@@ -19,27 +19,44 @@
         </div>
         <button type="button" class="btn btn-outline-primary">ログイン</button>
       </div>
-     
-    </div>
-    
-    <div class="media-body">
-       <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, method: :delete, class: 'post nav-item nav-link' do %>
-          <button type="button" class="btn btn-primary text-right">ログアウト</button>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_session_path, class: 'post nav-item nav-link' do %>
-          <form class="float-right">
-            <div class = "text-right">
-              <button type="button" class="btn btn-primary">ログイン</button>
-            </div>
-          </form>
-        <% end %>
-      <% end %>
-
-      <% unless user_signed_in? %>
-         <%= link_to "アカウント作成", new_user_registration_path %>
-      <% end %>
+      
+      <div class="text-right">
+        パスワードを忘れた場合はこちら
+      </div>
+      
+      <div class="row p-5">
+        <div class="col-6">
+          <div>
+            あなたの「好き」をフォローしよう。
+          </div>
+          <div>
+            話題のトピックを追いかけましょう。
+          </div>
+          <div>
+            Twitterに参加しましょう。
+          </div>
+        </div>
+        
+        <div class="col-6 text-center">
+          <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'post nav-item nav-link' do %>
+            <button type="button" class="btn btn-primary text-right">ログアウト</button>
+          <% end %>
+          <% else %>
+            <%= link_to "アカウント作成", new_user_registration_path %>
+          <% end %>
+          
+          <% unless user_signed_in? %>
+           <%= link_to new_user_session_path, class: 'post nav-item nav-link' do %>
+              <form class>
+                <div class>
+                  <button type="button" class="btn btn-primary">ログイン</button>
+                </div>
+              </form>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
